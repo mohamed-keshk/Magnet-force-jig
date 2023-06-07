@@ -4,7 +4,7 @@ byte pinData = 4;
 byte pinClk = 5;
 int Reset = 6;
 float currentValue = 0;
-float minValue = 0;
+float maxValue = 0;
 
 // define HX711
 HX711 scale;
@@ -19,13 +19,15 @@ void setup() {
 
 void loop() {
   int ResetValue = digitalRead(Reset);
-  /*Serial.print("Reading: ");*/
   currentValue = -scale.get_units();
 
-  if (currentValue > minValue) {
-    minValue = currentValue;
+  if (currentValue > maxValue) {
+    maxValue = currentValue;
   }
-    Serial.println(minValue);
+  
+    Serial.print("Reading: ");
+    Serial.println(maxValue);
+  
   if (ResetValue == 0) {
     minValue = 0;
   }
