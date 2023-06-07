@@ -1,12 +1,13 @@
 #include "HX711.h"
 #define CALIBRATION_FACTOR -114370.00
+
 byte pinData = 4;
 byte pinClk = 5;
 int Reset = 6;
+
 float currentValue = 0;
 float maxValue = 0;
 
-// define HX711
 HX711 scale;
 
 void setup() {
